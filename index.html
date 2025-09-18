@@ -15,11 +15,6 @@
     </style>
 </head>
 <body>
-    <!-- khung vòng quay -->
-    <div class="wheel-container">
-        <!--phần mũi tênnnn -->
-        <div class="arrow"></div>
-
     </div>
     <div class="icons-container">
         <div class="icon-wrapper icon1"> <a href="https://www.instagram.com/fresh5yogurt/" target="_blank"><img src="icons/LOGO.png" alt="icon1"></a></div>
@@ -40,10 +35,30 @@
         <div class="icon-wrapper icon16"><img src="icons/rabbit.png" class="rabbit" id="rabbit"alt="icon16"></div>
     </div>
     <!-- dcm cái nút quay -->
-
-
     <div id="cat-talk" class="talk-bubble">Meowww i miss u</div>
     <div id="cat" style="cursor: pointer;"></div>
+
+ <div class="wheel-container" onclick="spinWheel()">
+      <!-- Mũi tên CỐ ĐỊNH (không nằm trong #wheel) -->
+      <div class="arrow" aria-hidden="true"></div>
+
+      <!-- Wheel (chỉ phần này quay) -->
+      <div id="wheel" class="wheel">
+        <!-- Các segment ở đây (cậu có thể dần thay text bằng <img> icon) -->
+        <div class="segment segment1"><span>Segment 1</span></div>
+        <div class="segment segment2"><span>Segment 2</span></div>
+        <div class="segment segment3"><span>Segment 3</span></div>
+        <div class="segment segment4"><span>Segment 4</span></div>
+        <div class="segment segment5"><span>Segment 5</span></div>
+        <div class="segment segment6"><span>Segment 6</span></div>
+        <div class="segment segment7"><span>Segment 7</span></div>
+        <div class="segment segment8"><span>Segment 8</span></div>
+      </div>
+    </div>
+
+
+
+
     <script src="jscript.json"></script>
 </body>
 </html>
