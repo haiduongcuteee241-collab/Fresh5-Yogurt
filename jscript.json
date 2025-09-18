@@ -1,0 +1,60 @@
+// JavaScript để quay vòng quay
+let isSpinning = false;
+let currentDeg = 0;
+
+function spinWheel() {
+    if (isSpinning) return; // Ngừng nếu đang quay
+    isSpinning = true;
+
+    let spinDeg = Math.floor(Math.random() * 360) + 3600; // Số vòng quay ngẫu nhiên
+    let wheel = document.querySelector('.wheel-container');
+    
+
+    wheel.style.transition = "transform 5s ease-out";
+    wheel.style.transform = `rotate(${spinDeg + currentDeg}deg)`;
+
+   
+    setTimeout(() => {
+        currentDeg += spinDeg;
+        isSpinning = false;
+    }, 5000);
+}
+
+const cat = document.getElementById("cat");
+const bubble = document.getElementById("cat-talk");
+
+let isBubbleVisible = false; // Trạng thái hiển thị hộp thoại
+
+// Khi click vào mèo
+cat.addEventListener("click", () => {
+  if (!isBubbleVisible) {
+    bubble.classList.add("show"); // Thêm lớp show để làm hộp thoại xuất hiện
+    bubble.textContent = "Meowww I miss you!"; 
+    isBubbleVisible = true; // Đánh dấu hộp thoại đang hiển thị
+  }
+});
+
+// Khi click ra ngoài mèo/chatbox
+document.addEventListener("click", (event) => {
+  if (!cat.contains(event.target) && !bubble.contains(event.target)) {
+    bubble.classList.remove("show"); // Ẩn hộp thoại ngay lập tức
+    isBubbleVisible = false; // Đánh dấu hộp thoại đã ẩn
+  }
+});
+
+// Ngăn không cho sự kiện click trên bubble sẽ tắt hộp thoại
+bubble.addEventListener("click", (event) => {
+  event.stopPropagation(); // Ngăn không cho sự kiện click lan ra ngoài
+});
+
+
+const rabbit = document.getElementById('rabbit');
+
+rabbit.addEventListener('click', () => {
+  rabbit.classList.add('hopping');
+
+  // nếu muốn click lần nữa thì chạy lại từ đầu
+  rabbit.addEventListener('animationend', () => {
+    rabbit.classList.remove('hopping');
+  });
+});
