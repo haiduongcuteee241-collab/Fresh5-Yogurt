@@ -21,67 +21,6 @@ html, body {
   margin: 0;            /* Xóa margin mặc định */
 }
 
-.wheel-container {
-    position: relative;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: conic-gradient(#f2b6d3 0deg 60deg, #f8b7d3 60deg 120deg, #f2b6d3 120deg 180deg, #f8b7d3 180deg 240deg, #f2b6d3 240deg 300deg, #f8b7d3 300deg 360deg);
-    border: 5px solid #ff6fa7;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top : -50px;
-    user-select: none;
-}
-
-
-.spin-button {
-    position: absolute;
-    bottom: 20px;
-    background-color: #ff6fa7;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    padding: 15px 30px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.spin-button:hover {
-   background-color: #ff4f90;
-}
-
-/* burn out vcl*/
-.arrow {
-    position: absolute;
-    top: -30px;
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 30px solid #ff6fa7;
-    z-index: 2;
-}
-
-/* Các mục của vòng quay */
-.wheel-segment {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform-origin: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    color: #fff;
-    font-weight: bold;
-}
-
 .icons-container {
   position: absolute;  
   width: 100%;
@@ -90,8 +29,8 @@ html, body {
 
 .icon-wrapper {
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 10%;
+  height: 10%;
 }
 
 
@@ -105,40 +44,39 @@ html, body {
 
 
 .icon-wrapper:hover img {
-  transform: translateY(-15px) scale(1.1);
+  transform: translateY(-13%) scale(1.1);
 }
 
 .icon1 {
-    width: 150px;
-    height: 150px;
-    top : 35px;
-    left : 35px;
+    width: 7.8vw;
+    height: 7vw;
+    top : 1.5vw;;
+    left : 1.5vw;
 }
 
 .icon2 {
-    width: 120px;
-    height: 120px;
-    top : 15px;
-    left : 100px;
+    width: 7vw;
+    height: 7vw;
+    top : 0.2vw;
+    left : 4.5vw;
 }
 
 .icon3 {
-    width: 250px;
-    height: 250px;
-    bottom : -25px;
-    left : -15px;
+    width: 12vw;
+    height: 12vw;
+    bottom : -1.5vw;
 }
 
 .icon4 {
-    width: 100px;
-    height: 100px;;
-    bottom : 70px;
-    left : 480px;
+    width: 5vw;
+    height: 5.5vw;  
+    bottom : 2.5vw;
+    left : 25vw;
 }
 
 .icon5 {
-    width: 90px;;
-    height: 90px;
+    width: 7vw;
+    height: 5.5vw;
     bottom : 80px;
     left : 610px;
 }
@@ -312,6 +250,15 @@ html, body {
 .hidden {
   display: none !important;
 }
+
+.second-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 550px; /* khoảng cách giữa chat và bánh xe */
+  padding: 40px;
+}
+
 /* Chatbox giả Instagram */
 .chatbox {
   width: 400px;
@@ -404,4 +351,108 @@ html, body {
 
 .chat-options button:hover {
   background-color: #ff4b83;
+}
+
+
+/* ---- container ---- */
+.wheel-container{
+  position: abosolute;
+  width: var(--size);
+  height: var(--size);
+  top : 50%
+  user-select: none;
+}
+
+
+.arrow{
+  position:absolute;
+  top: -60px;          
+  left: 240px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  transform: rotate(180deg);
+  z-index: 20;          
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+}
+
+
+.wheel{
+  position: absolute;
+  inset: 0;                 
+  border-radius: 50%;
+  overflow: visible;
+  border: var(--border) solid #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12), inset 0 6px 18px rgba(255,255,255,0.15);
+
+  background: conic-gradient(
+    #ff9ab7 0deg 45deg,
+    #f8c4d7 45deg 90deg,
+    #ff8fa6 90deg 135deg,
+    #f8a2b7 135deg 180deg,
+    #ff6fa7 180deg 225deg,
+    #f5a1c4 225deg 270deg,
+    #ffd9a8 270deg 315deg,
+    #c8f7d4 315deg 360deg
+  );
+  transition: transform 4.5s cubic-bezier(.22,.9,.12,1);
+  transform-origin: 50% 50%;
+  z-index: 1;
+  display:block;
+}
+
+
+.segment{
+  position:absolute;
+  inset:0;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+.segment span{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 50% 50%;
+
+  transform: translate(-50%, -50%) translateY(-150px);
+  color: #333;
+  font-weight:700;
+  background: rgba(255,255,255,0.9);
+  padding:6px 10px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  font-size:14px;
+}
+
+
+.segment1  { transform: rotate(0deg);   } 
+.segment2  { transform: rotate(45deg);  }
+.segment3  { transform: rotate(90deg);  }
+.segment4  { transform: rotate(135deg); }
+.segment5  { transform: rotate(180deg); }
+.segment6  { transform: rotate(225deg); }
+.segment7  { transform: rotate(270deg); }
+.segment8  { transform: rotate(315deg); }
+
+
+.wheel::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:88px;
+  height:88px;
+  transform: translate(-50%,-50%);
+  background: linear-gradient(180deg, #fff, #ffd9e9);
+  border-radius:50%;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  z-index: 5;
+  border: 4px solid rgba(255,255,255,0.6);
 }

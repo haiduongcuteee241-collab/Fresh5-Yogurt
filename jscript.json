@@ -161,3 +161,38 @@ window.onload = () => {
     `;
 }, 1000);
 };
+
+
+
+function spinWheel() {
+  if (!wheel) return;
+  if (isSpinning) return;
+  isSpinning = true;
+
+  // quay thêm 5..8 vòng + góc random 0..359
+  const extra = Math.floor(Math.random() * 360) + 360 * (5 + Math.floor(Math.random() * 4));
+  currentRotation += extra;
+
+  wheel.style.transition = 'transform 4.5s cubic-bezier(.22,.9,.12,1)';
+  wheel.style.transform = `rotate(${currentRotation}deg)`;
+
+  wheel.addEventListener('transitionend', onSpinEnd, { once: true });
+}
+
+function onSpinEnd() {
+  const finalDeg = currentRotation % 360;
+  const segAngle = 360 / SEG_COUNT;
+
+  // Nếu label của cậu nằm CHÍNH GIỮA mỗi segment -> KHÔNG cần + segAngle/2
+  // nếu label đặt theo góc bắt đầu, có thể cần +segAngle/2
+  let angleAtTop = (360 - finalDeg) % 360;
+  let index = Math.floor(angleAtTop / segAngle);
+  index = (index + SEG_COUNT) % SEG_COUNT;
+
+  const chosen = segments[index] ? segments[index].textContent.trim() : '???';
+
+  setTimeout(() => {
+    alert(`Bạn trúng: ${chosen}`);
+    isSpinning = false;
+  }, 200);
+}

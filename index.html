@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luck Wheel</title>
@@ -47,28 +48,45 @@
 <div id="overlay" class="overlay">
   <div class="overlay-content">
 
-<div class="chatbox">
-  <div class="chat-header">
-    <img src="icons/instagram.png" class="instagram" alt="insta-icon"> Fresh5 Yogurt </div>
-  <div class="chat-body" id="chatBody">
-    <div class="chat-message from-them">
-      heluuu
-    </div>
+<div class="second-container">
+
+  <div class="chatbox">
+    <div class="chat-header">
+     <img src="icons/instagram.png" class="instagram" alt="insta-icon"> Fresh5 Yogurt </div>
+   <div class="chat-body" id="chatBody">
+      <div class="chat-message from-them">
+        heluuu
+     </div>
     
-<div class="chat-options" id="chatOptions">
-    <button onclick="sendOptionMessage1('Tớ rùii')">Tớ rùii</button>
-    <button onclick="sendOptionMessage2('Tớ chưaa')">Tớ chưaa</button>
-    <button onclick="sendOptionMessage3('Hehehe')">Hehehe</button>
-</div>
-    <div class="chat-message from-them">
-      hellu lan 2
-    </div>
-    <div class="chat-message from-me">
-      okieee
+  <div class="chat-options" id="chatOptions">
+     <button onclick="sendOptionMessage1('Tớ rùii')">Tớ rùii</button>
+      <button onclick="sendOptionMessage2('Tớ chưaa')">Tớ chưaa</button>
+     <button onclick="sendOptionMessage3('Hehehe')">Hehehe</button>
+  </div>
+      <div class="chat-message from-them">
+        hellu lan 2
+      </div>
+      <div class="chat-message from-me">
+        okieee
+      </div>
+   </div>
+  </div>
+
+
+   <div class="wheel-container" onclick="spinWheel()">
+     <div class="arrow" aria-hidden="true"></div>
+      <div id="wheel" class="wheel">
+        <div class="segment segment1"><span>Segment 1</span></div>
+        <div class="segment segment2"><span>Segment 2</span></div>
+        <div class="segment segment3"><span>Segment 3</span></div>
+        <div class="segment segment4"><span>Segment 4</span></div>
+        <div class="segment segment5"><span>Segment 5</span></div>
+         <div class="segment segment6"><span>Segment 6</span></div>
+        <div class="segment segment7"><span>Segment 7</span></div>
+        <div class="segment segment8"><span>Segment 8</span></div>
     </div>
   </div>
 </div>
-
 
   </div>
 </div>
