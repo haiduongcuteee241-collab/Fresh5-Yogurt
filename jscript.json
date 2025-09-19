@@ -47,3 +47,117 @@ overlay.addEventListener("click", function (e) {
     closeOverlay();
   }
 });
+
+// Mô phỏng hiệu ứng gõ tin nhắn
+function typeMessage(message, className) {
+  let chatBody = document.getElementById('chatBody');
+  let messageDiv = document.createElement('div'); // Tạo một phần tử mới cho tin nhắn
+  messageDiv.classList.add('chat-message', className);
+   // Thêm class cho tin nhắn
+  chatBody.appendChild(messageDiv); // Thêm vào chatBody
+  let i = 0;
+  let interval = setInterval(() => {
+    messageDiv.innerHTML += message.charAt(i);  // Hiển thị từng ký tự
+    chatBody.scrollTop = chatBody.scrollHeight; // Cuộn xuống cuối cùng
+    i++;
+    if (i === message.length) {
+      clearInterval(interval); // Dừng khi gõ xong
+      showOptions(); // Hiển thị các lựa chọn
+    }
+  }, 50); // Điều chỉnh tốc độ gõ
+}
+
+// Hiển thị các lựa chọn (ucii, hongg, được)
+function showOptions() {
+  document.getElementById('chatOptions').style.display = 'flex';
+}
+
+function sendOptionMessage1() {
+    document.getElementById('chatOptions').style.display = 'none';
+
+    let chatBody = document.getElementById('chatBody');
+    chatBody.innerHTML += `
+        <div class="chat-message from-me">Tớ rùii</div>
+    `;
+    chatBody.scrollTop = chatBody.scrollHeight; 
+    setTimeout(() => {
+        chatBody.innerHTML += `
+            <div class="chat-message from-them">Tụi tớ xin cãm ưn cậu nhìu nhoaa</div>
+        `;
+        chatBody.scrollTop = chatBody.scrollHeight;
+        setTimeout(() => {    
+            chatBody.innerHTML += `
+                <div class="chat-message from-them">Tụi tớ xin tặng cậu 1 lượt quay siu siu may mắn</div>
+            `;
+            chatBody.scrollTop = chatBody.scrollHeight; 
+            setTimeout(() => {
+                // Tin nhắn thứ tư
+                chatBody.innerHTML += `
+                    <div class="chat-message from-them">Hoặc hong =))</div>
+                `;
+                chatBody.scrollTop = chatBody.scrollHeight; // Cuộn xuống dưới
+            }, 3000); // Đợi 3 giây giữa tin nhắn thứ ba và thứ tư
+
+        }, 1900); // Đợi 1.9 giây giữa tin nhắn thứ hai và thứ ba
+    }, 400); // Đợi 0.4 giây giữa tin nhắn đầu tiên và thứ hai
+}
+
+
+// Hàm gửi thông điệp khi chọn 'hongg'
+function sendOptionMessage2() {
+    document.getElementById('chatOptions').style.display = 'none';
+
+    let chatBody = document.getElementById('chatBody');
+    chatBody.innerHTML += `
+        <div class="chat-message from-me">Tớ chưaaa</div>
+    `;
+    chatBody.scrollTop = chatBody.scrollHeight; 
+    setTimeout(() => {
+        chatBody.innerHTML += `
+            <div class="chat-message from-them">Uii, tại sao cậu chưa thử đii, ngon lắm lun óo 🥺</div>
+        `;
+        chatBody.scrollTop = chatBody.scrollHeight;
+        setTimeout(() => {    
+            chatBody.innerHTML += `
+                <div class="chat-message from-them">Hay cậu hong mua được hủm, gửi stk tớ ting ting cho mà thử</div>
+            `;
+            chatBody.scrollTop = chatBody.scrollHeight; 
+            setTimeout(() => {
+                chatBody.innerHTML += `
+                    <div class="chat-message from-them">Cậu inbox stk qua page ngay nhó </div>
+                `;
+                chatBody.scrollTop = chatBody.scrollHeight; // Cuộn xuống dưới
+                  setTimeout(() => {
+                    chatBody.innerHTML += `
+                    <div class="chat-message from-them">Đừng để tớ phải gia trưởng 🙄</div>
+                `;
+                chatBody.scrollTop = chatBody.scrollHeight;
+                                  }, 2000);
+            }, 2000); 
+
+        }, 2000); 
+    }, 1000); 
+}
+
+// Hàm gửi thông điệp khi chọn 'được'
+function sendOptionMessage3() {
+    let chatBody = document.getElementById('chatBody');
+    chatBody.innerHTML += `
+        <div class="chat-message from-me">Hehehehe</div>
+    `;
+    setTimeout(() => {
+        typeMessage("Được rồi! Cậu quay giúp đi.", 'from-them');
+    }, 500);
+    
+    // Ẩn các lựa chọn sau khi người dùng chọn
+    document.getElementById('chatOptions').style.display = 'none';
+}
+// Khi trang tải, bắt đầu hiệu ứng nhập tin nhắn
+window.onload = () => {
+  let chatBody = document.getElementById('chatBody');
+  setTimeout(() => {
+      chatBody.innerHTML += `
+        <div class="chat-message from-them">Heluu, cho tớ hỏi cậu đã thưởng thức sữa chua của tụi tớ chưa ạaa</div>
+    `;
+}, 1000);
+};
