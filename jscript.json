@@ -95,15 +95,14 @@ function sendOptionMessage1() {
                 chatBody.innerHTML += `
                     <div class="chat-message from-them">Hoặc hong =))</div>
                 `;
-                chatBody.scrollTop = chatBody.scrollHeight; // Cuộn xuống dưới
-            }, 3000); // Đợi 3 giây giữa tin nhắn thứ ba và thứ tư
+                chatBody.scrollTop = chatBody.scrollHeight; 
+            }, 3000); 
 
-        }, 1900); // Đợi 1.9 giây giữa tin nhắn thứ hai và thứ ba
-    }, 400); // Đợi 0.4 giây giữa tin nhắn đầu tiên và thứ hai
+        }, 1900); 
+    }, 400); 
 }
 
 
-// Hàm gửi thông điệp khi chọn 'hongg'
 function sendOptionMessage2() {
     document.getElementById('chatOptions').style.display = 'none';
 
@@ -123,6 +122,7 @@ function sendOptionMessage2() {
             `;
             chatBody.scrollTop = chatBody.scrollHeight; 
             setTimeout(() => {
+
                 chatBody.innerHTML += `
                     <div class="chat-message from-them">Cậu inbox stk qua page ngay nhó </div>
                 `;
@@ -139,7 +139,7 @@ function sendOptionMessage2() {
     }, 1000); 
 }
 
-// Hàm gửi thông điệp khi chọn 'được'
+
 function sendOptionMessage3() {
     let chatBody = document.getElementById('chatBody');
     chatBody.innerHTML += `
@@ -149,10 +149,10 @@ function sendOptionMessage3() {
         typeMessage("Được rồi! Cậu quay giúp đi.", 'from-them');
     }, 500);
     
-    // Ẩn các lựa chọn sau khi người dùng chọn
+
     document.getElementById('chatOptions').style.display = 'none';
 }
-// Khi trang tải, bắt đầu hiệu ứng nhập tin nhắn
+
 window.onload = () => {
   let chatBody = document.getElementById('chatBody');
   setTimeout(() => {
