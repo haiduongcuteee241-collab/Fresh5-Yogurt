@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
             font-family: 'Chewy', cursive;
@@ -15,50 +16,70 @@
     </style>
 </head>
 <body>
-    </div>
-    <div class="icons-container">
+    <div class="icons-container wheel-themes">
         <div class="icon-wrapper icon1"> <a href="https://www.instagram.com/fresh5yogurt/" target="_blank"><img src="icons/LOGO.png" alt="icon1"></a></div>
         <div class="icon-wrapper icon2"><img src="icons/RUY BANG.png" alt="icon2"></div> 
         <div class="icon-wrapper icon3"><img src="icons/meow.png" id="cat" class="cat" alt="icon3"></div>
-        <div class="icon-wrapper icon4"><img src="icons/suachua1.png" alt="icon4"></div>
-        <div class="icon-wrapper icon5"><img src="icons/suachua2.png" alt="icon5"></div>
-        <div class="icon-wrapper icon6"><img src="icons/suachua3.png" alt="icon6"></div>
-        <div class="icon-wrapper icon7"><img src="icons/suachua4.png" alt="icon7"></div>
-        <div class="icon-wrapper icon8"><img src="icons/suachua5.png" alt="icon8"></div>
-        <div class="icon-wrapper icon9"><img src="icons/suachua6.png" alt="icon9"></div>
-        <div class="icon-wrapper icon10"><img src="icons/suachua7.png" alt="icon10"></div>
-        <div class="icon-wrapper icon11"><img src="icons/suachua8.png" alt="icon11"></div>
-        <div class="icon-wrapper icon12">><img src="icons/suachua9.png" alt="icon12"></div>
-        <div class="icon-wrapper icon13"><img src="icons/suachua10.png" alt="icon13"></div>
-        <div class="icon-wrapper icon14"><img src="icons/suachua11.png" alt="icon14"></div>
-        <div class="icon-wrapper icon15"><img src="icons/suachua12.png" alt="icon15"></div>
+        <div class="icon-wrapper icon4"><img src="icons/suachua1.png" class="theme-icon" data-theme="theme1" alt="icon4"></div>
+        <div class="icon-wrapper icon5"><img src="icons/suachua2.png" class="theme-icon" data-theme="theme2" alt="icon5"></div>
+        <div class="icon-wrapper icon6"><img src="icons/suachua3.png" class="theme-icon" data-theme="theme3" alt="icon6"></div>
+        <div class="icon-wrapper icon7"><img src="icons/suachua4.png" class="theme-icon" data-theme="theme4" alt="icon7"></div>
+        <div class="icon-wrapper icon8"><img src="icons/suachua5.png" class="theme-icon" data-theme="theme5" alt="icon8"></div>
+        <div class="icon-wrapper icon9"><img src="icons/suachua6.png" class="theme-icon" data-theme="theme6" alt="icon9"></div>
+        <div class="icon-wrapper icon10"><img src="icons/suachua7.png" class="theme-icon" data-theme="theme7" alt="icon10"></div>
+        <div class="icon-wrapper icon11"><img src="icons/suachua8.png" class="theme-icon" data-theme="theme8" alt="icon11"></div>
+        <div class="icon-wrapper icon12"><img src="icons/suachua9.png" class="theme-icon" data-theme="theme9" alt="icon12"></div>
+        <div class="icon-wrapper icon13"><img src="icons/suachua10.png" class="theme-icon" data-theme="theme10" alt="icon13"></div>
+        <div class="icon-wrapper icon14"><img src="icons/suachua11.png" class="theme-icon" data-theme="theme11" alt="icon14"></div>
+        <div class="icon-wrapper icon15"><img src="icons/suachua12.png" class="theme-icon" data-theme="theme12" alt="icon15"></div>
         <div class="icon-wrapper icon16"><img src="icons/rabbit.png" class="rabbit" id="rabbit"alt="icon16"></div>
     </div>
     <!-- dcm cái nút quay -->
     <div id="cat-talk" class="talk-bubble">Meowww i miss u</div>
     <div id="cat" style="cursor: pointer;"></div>
 
- <div class="wheel-container" onclick="spinWheel()">
-      <!-- Mũi tên CỐ ĐỊNH (không nằm trong #wheel) -->
-      <div class="arrow" aria-hidden="true"></div>
+<!-- Icon mở game -->
+<div class="game-wrapper">
+  <div class="start-icon" onclick="startGame()">
+    <img src="icons/LOGO.png" alt="Start">
+  </div>
+</div>
 
-      <!-- Wheel (chỉ phần này quay) -->
-      <div id="wheel" class="wheel">
-        <!-- Các segment ở đây (cậu có thể dần thay text bằng <img> icon) -->
-        <div class="segment segment1"><span>Segment 1</span></div>
-        <div class="segment segment2"><span>Segment 2</span></div>
-        <div class="segment segment3"><span>Segment 3</span></div>
-        <div class="segment segment4"><span>Segment 4</span></div>
-        <div class="segment segment5"><span>Segment 5</span></div>
-        <div class="segment segment6"><span>Segment 6</span></div>
-        <div class="segment segment7"><span>Segment 7</span></div>
-        <div class="segment segment8"><span>Segment 8</span></div>
-      </div>
+<!-- Overlay (ẩn lúc đầu) -->
+<div id="overlay" class="overlay">
+  <div class="overlay-content">
+    <!-- Fake Instagram chat -->
+
+<div class="chatbox">
+  <div class="chat-header">Fresh5 Yogurt</div>
+  <div class="chat-body">
+    <div class="chat-message from-them">
+      <strong>Fresh5 Yogurt</strong>: 🎉 Chúc mừng bạn đã nhận được 1 lượt quay miễn phí!
     </div>
-
-
-
-
+    <div class="chat-message from-them">
+      👉 Hãy thử vận may ngay nhé!
+    </div>
+    <div class="chat-message from-me">
+      Dạ vâng, mình thử ngay 💖
+    </div>
+  </div>
+</div>
+    <!-- Wheel -->
+    <div class="wheel-container">
+      <div id="wheel" class="wheel">
+        <div class="segment">1</div>
+        <div class="segment">2</div>
+        <div class="segment">3</div>
+        <div class="segment">4</div>
+        <div class="segment">5</div>
+        <div class="segment">6</div>
+        <div class="segment">7</div>
+        <div class="segment">8</div>
+      </div>
+      <div class="arrow"></div>
+    </div>
+  </div>
+</div>
     <script src="jscript.json"></script>
 </body>
 </html>

@@ -32,6 +32,8 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    top : -50px;
+    user-select: none;
 }
 
 
@@ -265,49 +267,125 @@ html, body {
   opacity: 1; 
 }
 
-
-
-:root{
-  --size: 520px;        /* kích thước wheel */
-  --border: 8px;
-  --accent: #ff6fa7;
-}
-
-/* ---- container ---- */
-.wheel-container{
-  position: relative;
-  width: var(--size);
-  height: var(--size);
-  top : -50px;
-  user-select: none;
-}
-
-/* ---- arrow cố định ----
-   arrow là sibling của #wheel (KHÔNG nằm trong #wheel), nên khi #wheel rotate, arrow đứng yên
-*/
-.arrow{
-  position:absolute;
-  top: -60px;                 /* nằm ngoài biên trên của wheel */
-  left: 240px;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  transform: rotate(180deg);
-  z-index: 20;               /* luôn trên wheel */
-  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
-}
-
-/* ---- wheel (CHỈ PHẦN NÀY QUAY) ---- */
-.wheel{
+.game-wrapper {
   position: absolute;
-  inset: 0;                  /* top:0;left:0;right:0;bottom:0 */
+  width: 100%;
+  height: 0vh;            /* chiếm full màn hình */
+  display: flex;
+  justify-content: center;  /* căn ngang */
+  align-items: center;      /* căn dọc */
+}
+
+.start-icon img {
+  width: 200px;
+  cursor: pointer;
+  transition: transform 1s ease;
+}
+.start-icon img:hover {
+  transform: scale(1.1);
+}
+
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(192, 177, 177, 0.6);
+  display: none; /* ẩn lúc đầu */
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.overlay-content {
+  display: flex;
+  gap: 40px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 60px;
+  width: 80%;
+  max-width: none;
+}
+
+.overlay.active {
+  display: flex; /* hiện khi active */
+}
+.hidden {
+  display: none !important;
+}
+/* Chatbox giả Instagram */
+.chatbox {
+  width: 400px;
+  height: 700px;
+  max-width: 90%;
+  background-image: url("instagram.png"); /* nền giả lập IG */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* tránh tràn text */
+}
+
+.chat-header {
+  padding: 12px;
+  background: #ff6fa7;
+  color: white;
+  border-radius: 16px 16px 0 0;
+  font-weight: bold;
+  text-align: left;  
+  letter-spacing: 2px; 
+}
+
+.chat-body {
+  flex: 1;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+  overflow-y: auto;
+}
+
+/* bubble chat chung */
+.chat-message {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 14px;
+  max-width: 75%;
+  line-height: 1.4;
+}
+
+/* Tin nhắn của Fresh5 Yogurt (bên trái) */
+.chat-message.from-them {
+  background: rgba(255,255,255,0.8);
+  color: #333;
+  align-self: flex-start;
+}
+
+/* Tin nhắn của bạn (bên phải) */
+.chat-message.from-me {
+  background: #ff6fa7;
+  color: white;
+  align-self: flex-end;
+}
+
+/* Wheel */
+.wheel-container {
+  flex: 1;
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  overflow: visible;
-  border: var(--border) solid #fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12), inset 0 6px 18px rgba(255,255,255,0.15);
-  /* conic-gradient chia 8 phần: cậu có thể đổi màu từng phần */
+  border: 5px solid #ff6fa7;
   background: conic-gradient(
     #ff9ab7 0deg 45deg,
     #f8c4d7 45deg 90deg,
@@ -318,67 +396,17 @@ html, body {
     #ffd9a8 270deg 315deg,
     #c8f7d4 315deg 360deg
   );
-  transition: transform 4.5s cubic-bezier(.22,.9,.12,1);
-  transform-origin: 50% 50%;
-  z-index: 1;
-  display:block;
+  transition: transform 4s ease-out;
 }
 
-/* ---- segment labels (HTML elements for labels/icons) ----
-   Each .segment is full-size but rotated. The inner <span> is placed outwards and rotated back so text stays readable.
-*/
-.segment{
-  position:absolute;
-  inset:0;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  transform-origin: 50% 50%;
-  pointer-events: none; /* labels không chắn click vào wheel */
-}
-
-.segment span{
+.arrow {
   position: absolute;
+  top: -20px;
   left: 50%;
-  top: 50%;
-  transform-origin: 50% 50%;
-  /* đẩy label ra rìa vòng (tùy chỉnh translateY) */
-  transform: translate(-50%, -50%) translateY(-150px);
-  color: #333;
-  font-weight:700;
-  background: rgba(255,255,255,0.9);
-  padding:6px 10px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  font-size:14px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid #ff6fa7;
 }
-
-/* xoay từng segment (8 phần -> mỗi phần 45deg) */
-.segment1  { transform: rotate(0deg);   } /* label centered at 0deg */
-.segment2  { transform: rotate(45deg);  }
-.segment3  { transform: rotate(90deg);  }
-.segment4  { transform: rotate(135deg); }
-.segment5  { transform: rotate(180deg); }
-.segment6  { transform: rotate(225deg); }
-.segment7  { transform: rotate(270deg); }
-.segment8  { transform: rotate(315deg); }
-
-/* trang trí vòng giữa (nếu muốn) */
-.wheel::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  width:88px;
-  height:88px;
-  transform: translate(-50%,-50%);
-  background: linear-gradient(180deg, #fff, #ffd9e9);
-  border-radius:50%;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  z-index: 5;
-  border: 4px solid rgba(255,255,255,0.6);
-}
-
-/* nhỏ note */
-.note { margin-top: 18px; color:#666; font-size:14px; }

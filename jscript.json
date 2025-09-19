@@ -1,91 +1,49 @@
-// JavaScript để quay vòng quay
-const wheel = document.getElementById('wheel');
-const segments = document.querySelectorAll('.segment');
-const SEG_COUNT = segments.length;
-
-let isSpinning = false;
-let currentRotation = 0; // tổng độ đã quay (deg)
-
-// spin khi click vào container (đã set onclick trên container trong HTML)
-function spinWheel() {
-  if (isSpinning) return;
-  isSpinning = true;
-
-  // random: quay thêm 5..8 vòng + offset 0..359
-  const extra = Math.floor(Math.random() * 360) + 360 * (5 + Math.floor(Math.random() * 4));
-  currentRotation += extra;
-
-  // set transition + transform (quay)
-  wheel.style.transition = 'transform 4.5s cubic-bezier(.22,.9,.12,1)';
-  wheel.style.transform = `rotate(${currentRotation}deg)`;
-
-  // lắng nghe kết thúc transition một lần
-  wheel.addEventListener('transitionend', onSpinEnd, { once: true });
-}
-
-function onSpinEnd() {
-  // tính góc dừng ở phạm vi 0..360
-  const finalDeg = currentRotation % 360; // 0..359.999
-  // mỗi phần có góc:
-  const segAngle = 360 / SEG_COUNT;
-
-  /* 
-    Ta muốn xác định "segment" TRUNG TÂM bị mũi tên chỉ tới.
-    Arrow ở vị trí 0deg (top). Khi wheel được xoay finalDeg,
-    góc của wheel tương ứng với top là -finalDeg (mod360).
-    Để lấy segment index theo center, ta cộng segAngle/2 trước khi flooring.
-  */
-  // giá trị góc (0..360) của điểm top trên hệ quy chiếu các segment:
-  let angleAtTop = (360 - finalDeg + segAngle / 2) % 360;
-  let index = Math.floor(angleAtTop / segAngle);
-  index = (index + SEG_COUNT) % SEG_COUNT; // an toàn
-
-  // hiển thị kết quả (cậu có thể thay alert bằng modal / bubble đẹp)
-  const chosen = segments[index].textContent.trim();
-  // Ví dụ hiển thị modal đẹp: tạm dùng alert:
-  setTimeout(() => {
-    alert(`Bạn trúng: ${chosen}`);
-    isSpinning = false;
-  }, 200); // tí delay nhỏ để UX mượt
-}
-
+// --- Mèo ---
 const cat = document.getElementById("cat");
 const bubble = document.getElementById("cat-talk");
+let isBubbleVisible = false;
 
-let isBubbleVisible = false; // Trạng thái hiển thị hộp thoại
-
-// Khi click vào mèo
 cat.addEventListener("click", () => {
   if (!isBubbleVisible) {
-    bubble.classList.add("show"); // Thêm lớp show để làm hộp thoại xuất hiện
-    bubble.textContent = "Meowww I miss you!"; 
-    isBubbleVisible = true; // Đánh dấu hộp thoại đang hiển thị
+    bubble.classList.add("show");
+    bubble.textContent = "Meowww I miss you!";
+    isBubbleVisible = true;
   }
 });
 
-// Khi click ra ngoài mèo/chatbox
 document.addEventListener("click", (event) => {
   if (!cat.contains(event.target) && !bubble.contains(event.target)) {
-    bubble.classList.remove("show"); // Ẩn hộp thoại ngay lập tức
-    isBubbleVisible = false; // Đánh dấu hộp thoại đã ẩn
+    bubble.classList.remove("show");
+    isBubbleVisible = false;
   }
 });
 
-// Ngăn không cho sự kiện click trên bubble sẽ tắt hộp thoại
 bubble.addEventListener("click", (event) => {
-  event.stopPropagation(); // Ngăn không cho sự kiện click lan ra ngoài
+  event.stopPropagation();
 });
 
-
-const rabbit = document.getElementById('rabbit');
-
-rabbit.addEventListener('click', () => {
-  rabbit.classList.add('hopping');
-
-  // nếu muốn click lần nữa thì chạy lại từ đầu
-  rabbit.addEventListener('animationend', () => {
-    rabbit.classList.remove('hopping');
+// --- Thỏ ---
+const rabbit = document.getElementById("rabbit");
+rabbit.addEventListener("click", () => {
+  rabbit.classList.add("hopping");
+  rabbit.addEventListener("animationend", () => {
+    rabbit.classList.remove("hopping");
   });
 });
 
+// --- Overlay game ---
+const overlay = document.getElementById("overlay");
 
+function startGame() {
+  overlay.classList.add("active"); // chỉ show overlay
+}
+
+function closeOverlay() {
+  overlay.classList.remove("active"); // chỉ hide overlay
+}
+
+overlay.addEventListener("click", function (e) {
+  if (e.target === overlay) {
+    closeOverlay();
+  }
+});
