@@ -152,31 +152,30 @@ html, body {
 }
 
 .icon16 {
-    width: 170px;
-    height: 170px;
-    bottom : 270px;
-    left : 1800px;
+    width: 6.5vw;
+    height: 6.5vw;
+    bottom : 10vw;
+    left : 94vw;
 }
 
 .rabbit {
   position: absolute;
-    width: 170px;
-    height: 170px;
-    bottom : -140px;
+    width: 6.5vw;
+    height: 6.5vw;
   cursor: pointer;
 }
 
 @keyframes hop {
     0%   { transform: translateX(0) translateY(0); }
-    10%  { transform: translateX(-100px) translateY(150px); }
-    20%  { transform: translateX(-300px) translateY(0); }
-    30%  { transform: translateX(-500px) translateY(150px); }
-    40%  { transform: translateX(-700px) translateY(0); }
-    50%  { transform: translateX(-900px) translateY(150px); }
-    60%  { transform: translateX(-1100px) translateY(-0px); }
-    70%  { transform: translateX(-1300px) translateY(150px); }
-    80%  { transform: translateX(-1500px) translateY(0px); }
-    90%  { transform: translateX(-1600px) translateY(150px); }
+    10%  { transform: translateX(-10vw) translateY(10vw); }
+    20%  { transform: translateX(-20vw) translateY(0); }
+    30%  { transform: translateX(-30vw) translateY(10vw); }
+    40%  { transform: translateX(-40vw) translateY(0); }
+    50%  { transform: translateX(-50vw) translateY(10vw); }
+    60%  { transform: translateX(-60vw) translateY(0px); }
+    70%  { transform: translateX(-70vw) translateY(10vw); }
+    80%  { transform: translateX(-80vw) translateY(0px); }
+    90%  { transform: translateX(-90vw) translateY(10vw); }
     100% { transform: translateX(-120vw) translateY(0px); }
 }
 
@@ -186,15 +185,15 @@ html, body {
 
 .talk-bubble {
   position: absolute;
-  bottom: 250px;
-  left: 100px;
-  padding: 10px 15px;
+  bottom: 10vw;
+  left: 8vw;
+  padding: 0.2vw 0.5vw;
   background: #eeeced;
   border-radius: 20px;
-  border: 5px solid #f08cc6;
+  border: 0.3vw solid #f08cc6;
   font-family: 'Chewy', cursive;
   color: #c90db0;
-  font-size: 25px;
+  font-size: 1.2vw;
   display: none;  
   opacity: 0;
   transition: opacity 0.5s ease; 
@@ -214,8 +213,8 @@ html, body {
   align-items: center;      /* căn dọc */
 }
 
-.start-icon img {
-  width: 200px;
+.start-icon img {          /* chỉnh vòng quay dcm*/
+  width: 10vw;
   cursor: pointer;
   transition: transform 1s ease;
 }
