@@ -207,13 +207,13 @@ html, body {
 .game-wrapper {
   position: absolute;
   width: 100%;
-  height: 0vh;            /* chiếm full màn hình */
+  height: 0vh;         
   display: flex;
-  justify-content: center;  /* căn ngang */
-  align-items: center;      /* căn dọc */
+  justify-content: center;  
+  align-items: center;     
 }
 
-.start-icon img {          /* chỉnh vòng quay dcm*/
+.start-icon img {     
   width: 10vw;
   cursor: pointer;
   transition: transform 1s ease;
@@ -222,12 +222,12 @@ html, body {
   transform: scale(1.1);
 }
 
-/* Overlay */
+
 .overlay {
   position: fixed;
   inset: 0;
   background: rgba(192, 177, 177, 0.6);
-  display: none; /* ẩn lúc đầu */
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 50;
@@ -238,13 +238,14 @@ html, body {
   gap: 40px;
   background: #fff;
   border-radius: 20px;
-  padding: 60px;
-  width: 80%;
-  max-width: none;
+  padding: 0.5vw;          /* giảm padding để đỡ chiếm nhiều */
+  width: 85%;
+  height: 80%;       
+  align-items: center;
 }
 
 .overlay.active {
-  display: flex; /* hiện khi active */
+  display: flex; 
 }
 .hidden {
   display: none !important;
@@ -254,16 +255,14 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 550px; /* khoảng cách giữa chat và bánh xe */
-  padding: 40px;
+  gap: 20vw; 
+  padding: 2vw;
 }
 
-/* Chatbox giả Instagram */
 .chatbox {
-  width: 400px;
-  height: 700px;
-  max-width: 90%;
-  background-image: url("instagram.png"); /* nền giả lập IG */
+  width: 25vw;
+  height: 35vw;
+  background-image: url("instagram.png");
   background-size: cover;
   background-position: center;
   color: white;
@@ -271,7 +270,8 @@ html, body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* tránh tràn text */
+  overflow: hidden; 
+  word-wrap: break-word;
 }
 
 .chat-header {
@@ -294,33 +294,34 @@ html, body {
 
 .chat-body {
   flex: 1;
-  padding: 16px;
-  font-size: 14px;
+  padding: 0.5vw;
+  font-size: 0.8vw;
   line-height: 1.5;
   display: flex;
   flex-direction: column;
+  overflow: hidden; 
   gap: 10px; 
   overflow-y: auto;
 }
 
-/* bubble chat chung */
+
 .chat-message {
   display: inline-block;
-  padding: 10px 14px;
+  padding: 0.5vw 0.7vw;
   border-radius: 18px;
-  font-size: 14px;
+  font-size: 0.8vw;
   max-width: 75%;
   line-height: 1.4;
 }
 
-/* Tin nhắn của Fresh5 Yogurt (bên trái) */
+
 .chat-message.from-them {
   background: rgba(255,255,255,0.8);
   color: #333;
   align-self: flex-start;
 }
 
-/* Tin nhắn của bạn (bên phải) */
+
 .chat-message.from-me {
   background: #ff6fa7;
   color: white;
@@ -331,19 +332,19 @@ html, body {
   position: absolute;
   display: flex;
   justify-content: center;
-  padding: 10px;
-  bottom: 220px;
-  left: 233px;
+  padding: 0.5vw;
+  bottom: 10vw;
+  left: 12vw;
 }
 
 .chat-options button {
   background-color: #e9b363;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 0.5vw 0.7vw;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.8vw;
   transition: background 0.3s;
   margin-left: 15px;
 }
@@ -356,35 +357,38 @@ html, body {
 /* ---- container ---- */
 .wheel-container{
   position: abosolute;
-  width: var(--size);
-  height: var(--size);
-  top : 50%
+  width: 30vw;
+  height: 30vw;      
+  left: 50vw; 
+  top: 9vw;
   user-select: none;
 }
 
 
-.arrow{
-  position:absolute;
-  top: -60px;          
-  left: 240px;
-  transform: translateX(-50%);
+.arrow {
+  position: absolute;
+  top: 6vw;               /* đẩy mũi tên lên trên vòng */
+  left: 65.2vw;
+  transform: translateX(-50%) rotate(180deg); /* gộp lại */
   width: 0;
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  transform: rotate(180deg);
-  z-index: 20;          
-  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+  border-top: 30px solid #d61b1b; /* thêm mũi tên */
+  z-index: 20;
 }
-
 
 .wheel{
   position: absolute;
-  inset: 0;                 
+  inset: 0;  
+  width: 30vw;
+  height: 30vw;      
+  left: 50vw; 
+  top: 9vw;
   border-radius: 50%;
   overflow: visible;
-  border: var(--border) solid #fff;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.12), inset 0 6px 18px rgba(255,255,255,0.15);
+  border: var(--border) solid #ffffff;
+  box-shadow: 0 10px 30px rgba(233, 11, 11, 0.12), inset 0 6px 18px rgba(255,255,255,0.15);
 
   background: conic-gradient(
     #ff9ab7 0deg 45deg,
@@ -396,8 +400,6 @@ html, body {
     #ffd9a8 270deg 315deg,
     #c8f7d4 315deg 360deg
   );
-  transition: transform 4.5s cubic-bezier(.22,.9,.12,1);
-  transform-origin: 50% 50%;
   z-index: 1;
   display:block;
 }
@@ -419,8 +421,7 @@ html, body {
   left: 50%;
   top: 50%;
   transform-origin: 50% 50%;
-
-  transform: translate(-50%, -50%) translateY(-150px);
+  transform: translate(-50%, -50%) translateY(-10vw);
   color: #333;
   font-weight:700;
   background: rgba(255,255,255,0.9);
@@ -431,14 +432,14 @@ html, body {
 }
 
 
-.segment1  { transform: rotate(0deg);   } 
-.segment2  { transform: rotate(45deg);  }
-.segment3  { transform: rotate(90deg);  }
-.segment4  { transform: rotate(135deg); }
-.segment5  { transform: rotate(180deg); }
-.segment6  { transform: rotate(225deg); }
-.segment7  { transform: rotate(270deg); }
-.segment8  { transform: rotate(315deg); }
+.segment1  { transform: rotate(22.5deg);   }
+.segment2  { transform: rotate(67.5deg);  }
+.segment3  { transform: rotate(112.5deg);  }
+.segment4  { transform: rotate(157.5deg); }
+.segment5  { transform: rotate(202.5deg); }
+.segment6  { transform: rotate(247.5deg); }
+.segment7  { transform: rotate(292.5deg); }
+.segment8  { transform: rotate(337.5deg); }
 
 
 .wheel::after{

@@ -31,7 +31,7 @@ rabbit.addEventListener("click", () => {
   });
 });
 
-// --- Overlay game ---
+
 const overlay = document.getElementById("overlay");
 
 function startGame() {
@@ -162,7 +162,11 @@ window.onload = () => {
 }, 1000);
 };
 
-
+const wheel = document.getElementById('wheel');
+const segments = document.querySelectorAll('.segment');
+const SEG_COUNT = segments.length;
+let currentRotation = 0;
+let isSpinning = false;
 
 function spinWheel() {
   if (!wheel) return;
@@ -183,8 +187,7 @@ function onSpinEnd() {
   const finalDeg = currentRotation % 360;
   const segAngle = 360 / SEG_COUNT;
 
-  // Nếu label của cậu nằm CHÍNH GIỮA mỗi segment -> KHÔNG cần + segAngle/2
-  // nếu label đặt theo góc bắt đầu, có thể cần +segAngle/2
+
   let angleAtTop = (360 - finalDeg) % 360;
   let index = Math.floor(angleAtTop / segAngle);
   index = (index + SEG_COUNT) % SEG_COUNT;
